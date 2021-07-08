@@ -10,8 +10,14 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "SceneDelegate.h"
+#import "PostCell.h"
 
-@interface FeedViewController ()
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) NSMutableArray *arrayOfPosts;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -19,8 +25,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    [self getAllPosts];
+    
+    [self.refreshControl addTarget:self action:@selector(getAllPosts) forControlEvents:(UIControlEventValueChanged)];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
+
 - (IBAction)didTapLogout:(id)sender {
     // navigate back to login view controller
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
@@ -30,8 +46,39 @@
     
     // clear cached PFUser
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
     }];
+}
+
+- (void) getAllPosts {
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Post" predicate:nil];
+    [query includeKeys:@[@"author",@"image"]];
+    query.limit = 20;
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            self.arrayOfPosts = (NSMutableArray *) posts;
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+    }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arrayOfPosts.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    
+    Post *post = self.arrayOfPosts[indexPath.row];
+    
+    cell.post = post;
+    [cell refreshData];
+    
+    return cell;
 }
 
 /*

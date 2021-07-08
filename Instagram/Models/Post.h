@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Parse/Parse.h"
+
 @interface Post : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) NSString *postID;

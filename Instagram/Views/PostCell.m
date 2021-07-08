@@ -11,13 +11,31 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+- (void)refreshData {
+  
+    // set the post UIImageView based on the PFImage pased in through parse
+    [self.postImage setImage:nil];
+    [self.post.image getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        UIImage *image = [UIImage imageWithData:imageData];
+        [self.postImage setImage:image] ;
+    }];
+    
+    self.captionLabel.text = self.post.caption;
+    
+    NSString *likesString = @" likes";
+    if ([self.post.likeCount isEqualToNumber:@1]) {
+        likesString = @" like";
+    }
+    self.likeCountLabel.text = [[self.post.likeCount stringValue] stringByAppendingString:likesString];
+    
+    PFUser *user = self.post.author;
+    self.usernameLabel.text = user.username;
 }
 
 @end

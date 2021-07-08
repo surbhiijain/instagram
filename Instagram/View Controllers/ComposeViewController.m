@@ -43,7 +43,7 @@
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    UIImage *resizedImage = [self resizeImage:editedImage withSize:CGSizeMake(150, 150)];
+    UIImage *resizedImage = [self resizeImage:editedImage withSize:CGSizeMake(350, 350)];
     
     [self.imageButton setImage:nil forState:UIControlStateNormal];
     [self.imageButton setBackgroundImage:nil forState:UIControlStateNormal];
