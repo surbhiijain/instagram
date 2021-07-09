@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "SceneDelegate.h"
 #import "PostCell.h"
+#import "DetailsViewController.h"
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -52,8 +53,10 @@
 - (void) getAllPosts {
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post" predicate:nil];
-    [query includeKeys:@[@"author",@"image"]];
+    [query includeKeys:@[@"author",@"image", @"createdAt"]];
+    [query orderByDescending:@"createdAt"];
     query.limit = 20;
+    
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
@@ -81,14 +84,13 @@
     return cell;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"detailsSegue"]) {
+        DetailsViewController *detailsVC = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        detailsVC.post = self.arrayOfPosts[indexPath.row];
+    }
 }
-*/
+
 
 @end

@@ -10,8 +10,9 @@
 #import "Post.h"
 
 @interface PostCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
-@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *topUsernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bottomUsernameLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;

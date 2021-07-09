@@ -16,6 +16,7 @@
 		762B17392694F427005938A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 762B17382694F427005938A4 /* main.m */; };
 		762B17432694F427005938A4 /* InstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 762B17422694F427005938A4 /* InstagramTests.m */; };
 		762B174E2694F427005938A4 /* InstagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 762B174D2694F427005938A4 /* InstagramUITests.m */; };
+		762D837A2697BBF10015D336 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 762D83792697BBF10015D336 /* DetailsViewController.m */; };
 		766087A426950E810022C37C /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 766087A326950E810022C37C /* ComposeViewController.m */; };
 		766087A92695111C0022C37C /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 766087A82695111C0022C37C /* Post.m */; };
 		7678DDB42694FDD0008BD7E8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7678DDB32694FDD0008BD7E8 /* LoginViewController.m */; };
@@ -62,6 +63,8 @@
 		762B17492694F427005938A4 /* InstagramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstagramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		762B174D2694F427005938A4 /* InstagramUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramUITests.m; sourceTree = "<group>"; };
 		762B174F2694F427005938A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		762D83782697BBF10015D336 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		762D83792697BBF10015D336 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		766087A226950E810022C37C /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		766087A326950E810022C37C /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		766087A72695111C0022C37C /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 				7678DDB62695006D008BD7E8 /* FeedViewController.m */,
 				766087A226950E810022C37C /* ComposeViewController.h */,
 				766087A326950E810022C37C /* ComposeViewController.m */,
+				762D83782697BBF10015D336 /* DetailsViewController.h */,
+				762D83792697BBF10015D336 /* DetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 				767D4703269525400007B44A /* PostCell.m in Sources */,
 				766087A426950E810022C37C /* ComposeViewController.m in Sources */,
 				762B17392694F427005938A4 /* main.m in Sources */,
+				762D837A2697BBF10015D336 /* DetailsViewController.m in Sources */,
 				762B172B2694F425005938A4 /* SceneDelegate.m in Sources */,
 				766087A92695111C0022C37C /* Post.m in Sources */,
 			);

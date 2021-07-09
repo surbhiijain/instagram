@@ -35,7 +35,8 @@
     self.likeCountLabel.text = [[self.post.likeCount stringValue] stringByAppendingString:likesString];
     
     PFUser *user = self.post.author;
-    self.usernameLabel.text = user.username;
+    self.topUsernameLabel.text = user.username;
+    self.bottomUsernameLabel.text = user.username;
 }
 
 @end
