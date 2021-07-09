@@ -20,9 +20,8 @@
     [super viewDidLoad];
     [self.imageButton setBackgroundImage:[UIImage imageNamed:@"image_placeholder"] forState:UIControlStateNormal];
     self.postCaptionField.text = @"";
-    
-  
 }
+
 - (IBAction)didTapPhoto:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
@@ -53,7 +52,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
@@ -67,6 +65,7 @@
     
     return newImage;
 }
+
 - (IBAction)didTapCancel:(id)sender {
     [self.imageButton setBackgroundImage:[UIImage imageNamed:@"image_placeholder"] forState:UIControlStateNormal];
     self.postCaptionField.text = @"";
@@ -76,16 +75,16 @@
 - (IBAction)didTapShare:(id)sender {
     if (![self.imageButton.imageView.image isEqual:nil]) {
         [Post postUserImage:self.imageButton.imageView.image withCaption:self.postCaptionField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                NSLog(@"imaged posted");
-            } else {
+            if (!succeeded) {
                 NSLog(@"imaged not posted");
+            } else {
+                [self.delegate didPost];
             }
         }];
         // dismiss compose view controller to go back to feed
         [self dismissViewControllerAnimated:true completion:nil];
     } else {
-        NSLog(@"Please upload and photo");
+        NSLog(@"Please upload a photo");
     }
 }
 

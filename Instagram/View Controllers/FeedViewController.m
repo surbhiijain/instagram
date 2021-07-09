@@ -12,8 +12,9 @@
 #import "SceneDelegate.h"
 #import "PostCell.h"
 #import "DetailsViewController.h"
+#import "ComposeViewController.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -84,13 +85,21 @@
     return cell;
 }
 
+- (void)didPost{
+    [self getAllPosts];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"detailsSegue"]) {
         DetailsViewController *detailsVC = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         detailsVC.post = self.arrayOfPosts[indexPath.row];
     }
+    if ([segue.identifier isEqualToString:@"postSegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
 }
-
 
 @end

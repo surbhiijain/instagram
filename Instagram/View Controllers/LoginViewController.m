@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 - (IBAction)didTapLogin:(id)sender {
     NSString *username = self.usernameField.text;
@@ -28,7 +27,6 @@
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
-            NSLog(@"User logged in successfully");
             [self performSegueWithIdentifier:@"loginSegue" sender:self];
         }
     }];

@@ -192,7 +192,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="insta_camera_btn"/>
                                 <connections>
-                                    <segue destination="dO9-0c-Fpe" kind="presentation" id="WfT-D0-nx7"/>
+                                    <segue destination="dO9-0c-Fpe" kind="presentation" identifier="postSegue" id="WfT-D0-nx7"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -266,7 +266,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfn-fu-0Va">
-                                <rect key="frame" x="102.33333333333331" y="496" width="56.666666666666671" height="20.333333333333371"/>
+                                <rect key="frame" x="102.33333333333333" y="496" width="56.666666666666671" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

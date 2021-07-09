@@ -18,6 +18,10 @@
 }
 
 - (void)refreshData {
+
+    PFUser *user = self.post.author;
+    self.topUsernameLabel.text = user.username;
+    self.bottomUsernameLabel.text = user.username;
   
     // set the post UIImageView based on the PFImage pased in through parse
     [self.postImage setImage:nil];
@@ -33,10 +37,7 @@
         likesString = @" like";
     }
     self.likeCountLabel.text = [[self.post.likeCount stringValue] stringByAppendingString:likesString];
-    
-    PFUser *user = self.post.author;
-    self.topUsernameLabel.text = user.username;
-    self.bottomUsernameLabel.text = user.username;
+
 }
 
 @end
