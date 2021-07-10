@@ -46,13 +46,13 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-Signing in, persistence, logging out, and logging in
+![Signing in, persistence, logging out, and logging in](https://i.imgur.com/8dPnw4n.gif)
 ![](https://i.imgur.com/8dPnw4n.gif)
 
-Posting an image, liking posts
+![Posting an image, liking posts ](https://i.imgur.com/gCbLRj0.gif)
 ![](https://i.imgur.com/gCbLRj0.gif)
 
-Posting an image via mobile, pull to refresh
+![Posting an image via mobile, pull to refresh](https://i.imgur.com/lqmsa4g.gif)
 ![](https://i.imgur.com/lqmsa4g.gif)
 
 ## Credits
