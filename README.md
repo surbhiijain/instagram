@@ -55,6 +55,11 @@ Here's a walkthrough of implemented user stories:
 ![Posting an image via mobile, pull to refresh](https://i.imgur.com/lqmsa4g.gif)
 ![](https://i.imgur.com/lqmsa4g.gif)
 
+sorry, my gifs aren't loading properly, but here are the links to the imgur gifs if they do not show up for you
+1. https://i.imgur.com/8dPnw4n.gif
+2. https://i.imgur.com/gCbLRj0.gif
+3. https://imgur.com/a/lqmsa4g
+
 ## Credits
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
