@@ -32,12 +32,26 @@
     
     self.captionLabel.text = self.post.caption;
     
+    [self.likeButton.imageView setImage:nil];
+    UIImage *favIcon = [UIImage imageNamed:@"favor-icon"];
+    UIImage *favIconSelected = [UIImage imageNamed:@"favor-icon-red"];
+    
+    NSString *userID = [PFUser currentUser].username;
+    if ([self.post.likesArray containsObject:userID]) {
+        [self.likeButton setImage:favIconSelected forState:UIControlStateNormal];
+    } else {
+        [self.likeButton setImage:favIcon forState:UIControlStateNormal];
+    }
     NSString *likesString = @" likes";
     if ([self.post.likeCount isEqualToNumber:@1]) {
         likesString = @" like";
     }
     self.likeCountLabel.text = [[self.post.likeCount stringValue] stringByAppendingString:likesString];
 
+}
+- (IBAction)didTapLike:(id)sender {
+    [self.post likePost];
+    [self refreshData];
 }
 
 @end

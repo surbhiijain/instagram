@@ -14,7 +14,7 @@
 #import "DetailsViewController.h"
 #import "ComposeViewController.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, ComposeViewControllerDelegate, DetailsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -54,7 +54,7 @@
 - (void) getAllPosts {
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post" predicate:nil];
-    [query includeKeys:@[@"author",@"image", @"createdAt"]];
+    [query includeKeys:@[@"author",@"image", @"createdAt", @"likesArray"]];
     [query orderByDescending:@"createdAt"];
     query.limit = 20;
     
@@ -87,6 +87,12 @@
 
 - (void)didPost{
     [self getAllPosts];
+    [self.tableView reloadData];
+}
+
+- (void)detailVCUpdatePost {
+    [self getAllPosts];
+    [self.tableView reloadData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -94,11 +100,12 @@
         DetailsViewController *detailsVC = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         detailsVC.post = self.arrayOfPosts[indexPath.row];
+        detailsVC.delegate = self;
     }
     if ([segue.identifier isEqualToString:@"postSegue"]) {
-        UINavigationController *navigationController = [segue destinationViewController];
-        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-        composeController.delegate = self;
+        UINavigationController *navigationVC = [segue destinationViewController];
+        ComposeViewController *composeVC = (ComposeViewController*)navigationVC.topViewController;
+        composeVC.delegate = self;
     }
 }
 

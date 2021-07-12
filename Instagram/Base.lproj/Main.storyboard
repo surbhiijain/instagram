@@ -122,9 +122,12 @@
                                                         <constraint firstAttribute="height" constant="30" id="eG0-L9-5po"/>
                                                     </constraints>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" image="heart" catalog="system">
+                                                    <state key="normal">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didTapLike:" destination="pAR-4J-tfc" eventType="touchUpInside" id="mAY-0W-crz"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FbV-dO-4dH">
                                                     <rect key="frame" x="53" y="418.66666666666669" width="30" height="30"/>
@@ -163,6 +166,7 @@
                                         <connections>
                                             <outlet property="bottomUsernameLabel" destination="Tij-If-BrE" id="RJ8-IA-CZo"/>
                                             <outlet property="captionLabel" destination="JMC-QS-nRQ" id="iHl-6N-CUT"/>
+                                            <outlet property="likeButton" destination="Iyb-LY-kup" id="Fkn-PF-F4H"/>
                                             <outlet property="likeCountLabel" destination="llm-2z-tXu" id="ure-MD-abx"/>
                                             <outlet property="postImage" destination="ZkW-RJ-gQp" id="dft-EC-kL4"/>
                                             <outlet property="topUsernameLabel" destination="HLb-Kj-tN7" id="coG-CL-5X4"/>
@@ -258,6 +262,9 @@
                                 <state key="normal" image="heart" catalog="system">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapLike:" destination="Tv4-PC-oBs" eventType="touchUpInside" id="Abc-cx-AHs"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" image="image_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="X3H-Dp-3DP">
                                 <rect key="frame" x="15" y="100" width="360" height="325"/>
@@ -299,6 +306,7 @@
                     <connections>
                         <outlet property="bottomUsernameLabel" destination="uBv-gb-cb9" id="phI-TF-eoJ"/>
                         <outlet property="captionLabel" destination="hfn-fu-0Va" id="L3l-pU-KNZ"/>
+                        <outlet property="likeButton" destination="cOa-ng-u8f" id="DaW-EA-ezg"/>
                         <outlet property="likeCountLabel" destination="Xpw-e4-iKk" id="wz9-Nl-L2U"/>
                         <outlet property="postImage" destination="X3H-Dp-3DP" id="W2Y-06-abc"/>
                         <outlet property="timestampLabel" destination="dgc-1E-QYR" id="17P-VN-4Uk"/>

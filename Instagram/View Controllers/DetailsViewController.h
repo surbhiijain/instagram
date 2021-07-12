@@ -10,9 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol DetailsViewControllerDelegate
+
+- (void)detailVCUpdatePost;
+
+@end
+
 @interface DetailsViewController : UIViewController
 
 @property (nonatomic, strong) Post *post;
+@property (nonatomic, weak) id<DetailsViewControllerDelegate> delegate;
 
 @end
 

@@ -8,7 +8,6 @@
 #import "DetailsViewController.h"
 #import "DateTools.h"
 
-
 @interface DetailsViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *topUsernameLabel;
@@ -17,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
 
@@ -40,6 +40,17 @@
     
     self.captionLabel.text = self.post.caption;
     
+    [self.likeButton.imageView setImage:nil];
+    UIImage *favIcon = [UIImage imageNamed:@"favor-icon"];
+    UIImage *favIconSelected = [UIImage imageNamed:@"favor-icon-red"];
+    
+    NSString *userID = [PFUser currentUser].username;
+    if ([self.post.likesArray containsObject:userID]) {
+        [self.likeButton setImage:favIconSelected forState:UIControlStateNormal];
+    } else {
+        [self.likeButton setImage:favIcon forState:UIControlStateNormal];
+    }
+    
     NSString *likesString = @" likes";
     if ([self.post.likeCount isEqualToNumber:@1]) {
         likesString = @" like";
@@ -57,15 +68,10 @@
     
     self.timestampLabel.text = timeDate.shortTimeAgoSinceNow;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)didTapLike:(id)sender {
+    [self.post likePost];
+    [self.delegate detailVCUpdatePost];
+    [self refreshData];
 }
-*/
 
 @end

@@ -7,6 +7,7 @@
 
 
 #import "Post.h"
+#import "Parse/Parse.h"
 
 @implementation Post
     
@@ -17,6 +18,7 @@
 @dynamic image;
 @dynamic likeCount;
 @dynamic commentCount;
+@dynamic likesArray;
 
 + (nonnull NSString *)parseClassName {
     return @"Post";
@@ -30,6 +32,7 @@
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
+    newPost.likesArray = [NSMutableArray new];
     
     [newPost saveInBackgroundWithBlock: completion];
 }
@@ -43,6 +46,20 @@
         return nil;
     }
     return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
+}
+
+- (void)likePost {
+    NSString *userID = [PFUser currentUser].username;
+    NSNumber *likeCountChange = @0;
+    if ([self.likesArray containsObject:userID]) {
+        [self.likesArray removeObject:userID];
+        likeCountChange = @-1;
+    } else {
+        [self.likesArray addObject:userID];
+        likeCountChange = @1;
+    }
+    self.likeCount = @([self.likeCount intValue] + [likeCountChange intValue]);
+    [self saveInBackgroundWithBlock:nil];
 }
 
 @end
